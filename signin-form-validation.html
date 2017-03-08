@@ -1,0 +1,105 @@
+<!doctype html>
+<html ng-app="ValidationApp">
+
+<head>
+	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <style type="text/css">
+    .container {
+        width: 970px;
+        padding-top: 10px;
+        margin: 0 auto;
+    }
+    
+    .pure-form input.ng-dirty.ng-invalid {
+        border-color: #e9322d;
+    }
+    
+    .field-message {
+        display: inline-block;
+        color: #e9322d;
+        font-size: 90%;
+        margin-left: 0.5em;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+<body>
+    <div class="container" id="ValidationApp">
+        <h2>Existing Users</h2>
+        <form class="pure-form pure-form-aligned" name="frm" method="post" novalidate autocomplete="off">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label>Email Address</label>
+                    <input name="email" ng-model="user.email" type="email" placeholder="Email Address" required>
+                    <div class="field-message" ng-messages="frm.email.$error" ng-if='frm.email.$dirty' ng-cloak>
+                        <div ng-message="required">Email is required</div>
+                        <div ng-message="email">Must be a valid email</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">
+                    <label>Password</label>
+                    <input name="password" ng-model="user.password" type="password" placeholder="Password" required ng-minlength="6" ng-maxlength="10">
+                    <div class="field-message" ng-messages="frm.password.$error" ng-if='frm.password.$dirty' ng-cloak>
+                        <div ng-message="required">Password is required</div>
+                        <div ng-message="minlength">Password must have minimum 6 characters</div>
+                        <div ng-message="maxlength">Password must have maximum 10 characters</div>
+                    </div>
+                </div>                
+                <div class="pure-controls">
+                    <label class="pure-checkbox">
+                        <input name="conditions" ng-model="conditions" type="checkbox"> Remember Password
+                    </label>
+                    <button type="submit" class="pure-button pure-button-primary" ng-disabled="frm.$invalid || !conditions">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+        <h2>New User?</h2>
+        <form class="pure-form pure-form-aligned" name="frm1" method="post" novalidate autocomplete="off">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label>Username</label>
+                    <input name="username" ng-model="user.username" type="text" placeholder="Username" required>
+                    <div class="field-message" ng-messages="frm1.username.$error" ng-if='frm1.username.$dirty' ng-cloak>
+                        <div ng-message="required">Username is required</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">
+                    <label>Password</label>
+                    <input name="password1" ng-model="user.password1" type="password" placeholder="Password" required ng-minlength="6" ng-maxlength="10">
+                    <div class="field-message" ng-messages="frm1.password.$error" ng-if='frm1.password.$dirty' ng-cloak>
+                        <div ng-message="required">Password is required</div>
+                        <div ng-message="minlength">Password must have minimum 6 characters</div>
+                        <div ng-message="maxlength">Password must have maximum 10 characters</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">
+                    <label>Email Address</label>
+                    <input name="email1" ng-model="user.email1" type="email" placeholder="Email Address" required>
+                    <div class="field-message" ng-messages="frm1.email.$error" ng-if='frm1.email.$dirty' ng-cloak>
+                        <div ng-message="required">Email is required</div>
+                        <div ng-message="email">Must be a valid email</div>
+                    </div>
+                </div>
+                <div class="pure-controls">
+                    <label class="pure-checkbox">
+                        <input name="conditions1" ng-model="conditions1" type="checkbox"> I've read the terms and conditions
+                    </label>
+                    <button type="submit" class="pure-button pure-button-primary" ng-disabled="frm1.$invalid || !conditions">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>

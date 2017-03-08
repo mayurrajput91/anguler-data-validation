@@ -1,0 +1,93 @@
+<!doctype html>
+<html ng-app="ValidationApp">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <style type="text/css">
+    .container {
+        width: 970px;
+        padding-top: 10px;
+        margin: 0 auto;
+    }
+    
+    .pure-form input.ng-dirty.ng-invalid {
+        border-color: #e9322d;
+    }
+    
+    .field-message {
+        display: inline-block;
+        color: #e9322d;
+        font-size: 90%;
+        margin-left: 0.5em;
+    }
+    
+    [ng\:cloak],
+    [ng-cloak],
+    [data-ng-cloak],
+    [x-ng-cloak],
+    .ng-cloak,
+    .x-ng-cloak {
+        display: none !important;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-messages.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="ValidationApp">        
+        <h2>User Profile</h2>
+        <form class="pure-form pure-form-aligned" name="validateForm" method="post" novalidate autocomplete="off">
+            <fieldset>
+                <div class="pure-control-group">
+                    <label>First Name:</label>
+                    <input type="text" name="userFirstName" ng-model="user.firstName" required />
+                    <div class="field-message" ng-messages="validateForm.userFirstName.$error" ng-if='validateForm.userFirstName.$dirty' ng-cloak>
+                        <div ng-message="required">This field is required</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">
+                    <label>Last Name:</label>
+                    <input type="text" name="userLastName" ng-model="user.lastName" required />
+                    <div class="field-message" ng-messages="validateForm.userLastName.$error" ng-if='validateForm.userLastName.$dirty' ng-cloak>
+                        <div ng-message="required">This field is required</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">
+                    <label>Email Address:</label>
+                    <input type="email" name="userEmail" ng-model="user.email" required />
+                    <div class="field-message" ng-messages="validateForm.userEmail.$error" ng-if='validateForm.userEmail.$dirty' ng-cloak>
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="email">Your email address is invalid</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">            
+                    <label>Phone Number:</label>
+                    <input type="email" name="userPhoneNumber" ng-model="user.phoneNumber" ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/" required/>
+                    <div class="field-message" ng-messages="validateForm.userPhoneNumber.$error" ng-if='validateForm.userPhoneNumber.$dirty' ng-cloak>
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="pattern">Must be a valid 10 digit phone number</div>
+                    </div>
+                </div>
+                <div class="pure-control-group">                
+                    <label>User Message:</label>
+                    <textarea type="text" name="userMessage" class="form-control" rows="4" ng-model="user.message" ng-minlength="10" ng-maxlength="100" required></textarea>
+                    <div class="field-message" ng-messages="validateForm.userMessage.$error" ng-if='validateForm.userMessage.$dirty' ng-cloak>
+                        <div ng-message="required">This field is required</div>
+                        <div ng-message="minlength">Message must be over 10 characters</div>
+                        <div ng-message="maxlength">Message must not exceed 100 characters</div>
+                    </div>
+                </div>
+                <div class="pure-controls">
+                    <label class="pure-checkbox">
+                        <input name="conditions" ng-model="conditions" type="checkbox"> I've read the terms and conditions
+                    </label>
+                    <button type="submit" class="pure-button pure-button-primary" ng-disabled="validateForm.$invalid || !conditions">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
