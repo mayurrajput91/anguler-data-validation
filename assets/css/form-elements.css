@@ -47,7 +47,7 @@ textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeh
 
 
 .btn-primary.disabled, .btn-primary[disabled], fieldset[disabled] .btn-primary, .btn-primary.disabled:hover, .btn-primary[disabled]:hover, fieldset[disabled] .btn-primary:hover, .btn-primary.disabled:focus, .btn-primary[disabled]:focus, fieldset[disabled] .btn-primary:focus, .btn-primary.disabled.focus, .btn-primary.focus[disabled], fieldset[disabled] .btn-primary.focus, .btn-primary.disabled:active, .btn-primary[disabled]:active, fieldset[disabled] .btn-primary:active, .btn-primary.disabled.active, .btn-primary.active[disabled], fieldset[disabled] .btn-primary.active{background:rgba(243, 113, 35,0.8)}
-button.btn {
+button.btn, a.btn-a {
 	height: 50px;
     margin: 0;
     padding: 0 20px;
