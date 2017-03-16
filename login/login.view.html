@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2 text">
+        <h2><strong>Angular self learning</strong> Login Form</h2>        
+    </div>
+</div>
+<div class="col-md-6 col-md-offset-3">
+    <div class="form-top">
+        <div class="form-top-left">
+            <h3>Login to app and know more!</h3>
+            <p>Enter your email and password here:</p>
+        </div>
+        <div class="form-top-right">
+            <i class="fa fa-lock"></i>
+        </div>
+    </div>
+    <div class="form-bottom">
+        <form name="form" ng-submit="vm.login()" role="form" novalidate autocomplete="off">
+            <div class="form-group" ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+                <label for="username">Username</label>
+                <input type="email" name="username" id="username" placeholder="Your email address" class="form-control" ng-model="vm.username" required />                
+                <div class="help-block" ng-messages="form.username.$error" ng-if='form.username.$dirty' ng-cloak>
+                    <span ng-message="required">Username/Email is required</span>
+                    <span ng-message="email">Must be a valid email</span>
+                </div>
+            </div>
+            <div class="form-group" ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+                <label for="password">Password</label>
+                <input type="password" name="password" placeholder="Password" id="password" class="form-control" ng-model="vm.password" required ng-minlength="6" ng-maxlength="10" />                
+                <div class="help-block" ng-messages="form.password.$error" ng-if='form.password.$dirty' ng-cloak>
+                    <span ng-message="required">Password is required</span>
+                    <span ng-message="minlength">Password must have minimum 6 characters</span>
+                    <span ng-message="maxlength">Password must have maximum 10 characters</span>
+                </div>
+            </div>
+            <div class="form-actions">
+                <button type="submit" ng-disabled="form.$invalid || vm.dataLoading" class="btn btn-primary">Login</button>
+            </div>
+            <div class="dataLoadingoverlay" ng-if="vm.dataLoading"><img src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" /></div>
+        </form>
+    </div>
+    <a href="#!/register" class="btn btn-link">New user? Register your self</a>
+</div>

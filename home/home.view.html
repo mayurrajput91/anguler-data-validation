@@ -1,0 +1,18 @@
+<div class="form-top" style="width: 100%; text-align: center;">
+<div class="row ng-scope">
+    <div class="col-sm-8 col-sm-offset-2 text">
+        <h1 class="text-center">Hi <strong>{{vm.user.userFirstName}}</strong>!</h1>        
+    </div>
+</div>
+
+<p>You're logged in!!</p>
+<h3>All registered users:</h3>
+<ul>
+    <li ng-repeat="user in vm.allUsers">
+        {{user.username}} ({{user.userFirstName}} {{user.lastName}})
+        - <a ng-click="vm.deleteUser(user.id)">Delete</a>
+    </li>
+</ul>
+<p>&nbsp;</p>
+<p><button ng-click="#!/login" class="btn btn-primary">Logout</button></p>
+</div>
